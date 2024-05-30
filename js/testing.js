@@ -37,8 +37,19 @@ const firstMovieRat = prompt("На сколько оцените его?","");
 const secondMovie = prompt("Один из последних просмотренных фильмов?","");
 const secondMovieRat = prompt("На сколько оцените его?","");
 
-const movies = {
+personalMovieDB["movies"][firstMovie] = firstMovieRat;
+personalMovieDB["movies"][secondMovie] = secondMovieRat;
+
+console.log(personalMovieDB["movies"][firstMovie]);
+console.log(personalMovieDB["movies"][secondMovie]);
+
+/* const movies = {
     [firstMovie]: firstMovieRat,
     [secondMovie]: secondMovieRat
 }
-
+ */
+/* const newMov = {};
+for (newCount in newMov) {
+    newMov[newCount] = prompt("Один из последних просмотренных фильмов?","");
+    console.log(newCount)
+} */
