@@ -30,4 +30,9 @@ console.log(mm._)
 
 
 let checker = confirm("Are u ready?");
-console.log(typeof (checker) )
+console.log(typeof (checker) );
+
+let check = 5;
+let uncheck = 0;
+console.log(check && !uncheck);
+console.log(uncheck)
