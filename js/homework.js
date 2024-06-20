@@ -107,7 +107,7 @@ genres
 
 P.S. Функции вызывать не обязательно */
 
-let numberOfFilms;
+/* let numberOfFilms;
 function start(){
     numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
     console.log(numberOfFilms);
@@ -159,7 +159,7 @@ function writeYourGenres(){
     }
 }
 showMyDB(personalMovieDB.privat);
-writeYourGenres();
+writeYourGenres(); */
 
 
 
@@ -173,6 +173,78 @@ writeYourGenres();
 переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
 
 3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
+Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
+при помощи метода forEach вывести в консоль сообщения в таком виде:
+"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
+
+
+let numberOfFilms;
+function start(){
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    console.log(numberOfFilms);
+    while(Number.isNaN(numberOfFilms) || numberOfFilms === '' || numberOfFilms <= 0){
+        numberOfFilms = +prompt('Введите еще раз', '');
+        console.log(numberOfFilms);
+    }
+}
+start();
+
+
+
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
+    filmsCollector(){
+        for (let i = 0; i < numberOfFilms; i++) {
+            let lastWatchedMovie = prompt('Один из последних просмотренных фильмов?','');
+            while (lastWatchedMovie == null || lastWatchedMovie == '' || lastWatchedMovie.length > 50 ) {
+                lastWatchedMovie = prompt('Значение недопустимо, введите еще раз','');
+            }
+            let moviePersonalRating = prompt('На сколько оцените его?','');
+            while (moviePersonalRating == null || moviePersonalRating == '') {
+                moviePersonalRating = prompt('Значение недопустимо, введите еще раз','');
+            }
+            this.movies[lastWatchedMovie] = moviePersonalRating;
+        } 
+    },
+    userRatingChecker(){
+        this.count < 10?console.log("Просмотрено довольно мало фильмов"):this.count < 30?console.log("Вы классический зритель"):this.count >= 30?console.log("Вы киноман"):console.log("Произошла ошибка");
+    },
+    showMyDB(hidden){
+        if (hidden === false){
+            console.log(this);
+        }
+    },
+    writeYourGenres(){
+        for (let i = 1; i <= 3; i++){
+            let genreReq = prompt(`Ваш любимый жанр под номером ${i}`,'');
+            while(genreReq === null || genreReq === ''){
+                genreReq = prompt(`Введи снова жанр под номером ${i}`,'');
+            }
+            this.genres.push(genreReq);
+            console.log(this.genres);
+        }
+        this.genres.forEach((item, position) => {
+            console.log(`Любимый жанр ${++position} - это ${item}`)
+        })
+    },
+    toggleVisibleMyDB(){
+        this.privat === true?this.privat = false:this.privat = true;
+        console.log(this.privat)
+    }
+};
+
+personalMovieDB.toggleVisibleMyDB();
+personalMovieDB.toggleVisibleMyDB();
+personalMovieDB.toggleVisibleMyDB();
+
+personalMovieDB.writeYourGenres();
+
+
+/*3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
 Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
 при помощи метода forEach вывести в консоль сообщения в таком виде:
 "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
