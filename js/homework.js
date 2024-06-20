@@ -178,27 +178,25 @@ writeYourGenres(); */
 "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
 
 
-let numberOfFilms;
-function start(){
-    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-    console.log(numberOfFilms);
-    while(Number.isNaN(numberOfFilms) || numberOfFilms === '' || numberOfFilms <= 0){
-        numberOfFilms = +prompt('Введите еще раз', '');
-        console.log(numberOfFilms);
-    }
-}
-start();
 
 
 
 const personalMovieDB = {
-    count: numberOfFilms,
+    count: 0,
     movies: {},
     actors: {},
     genres: [],
     privat: false,
+    start(){
+        this.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+        console.log(this.count);
+        while(Number.isNaN(this.count) || this.count === '' || this.count <= 0){
+            this.count = +prompt('Введите еще раз', '');
+            console.log(this.count);
+        }
+    },
     filmsCollector(){
-        for (let i = 0; i < numberOfFilms; i++) {
+        for (let i = 0; i < this.count; i++) {
             let lastWatchedMovie = prompt('Один из последних просмотренных фильмов?','');
             while (lastWatchedMovie == null || lastWatchedMovie == '' || lastWatchedMovie.length > 50 ) {
                 lastWatchedMovie = prompt('Значение недопустимо, введите еще раз','');
