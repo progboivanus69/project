@@ -162,6 +162,7 @@ showMyDB(personalMovieDB.privat);
 writeYourGenres(); */
 
 
+/* Задание на урок 4:
 
 /* Задание на урок:
 
@@ -240,9 +241,3 @@ personalMovieDB.toggleVisibleMyDB();
 personalMovieDB.toggleVisibleMyDB();
 
 personalMovieDB.writeYourGenres();
-
-
-/*3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
-Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
-при помощи метода forEach вывести в консоль сообщения в таком виде:
-"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
