@@ -126,3 +126,180 @@ console.log( visitsCountObj[john] ); // 123
 
   
   alert( map.get("bro") ); // str1 */
+
+
+
+  let map = new Map();
+map.set('banana', 1);
+map.set('orange', 2);
+map.set('meat', 4);
+
+let entrAr = [];
+for (let entr of map.entries()){
+    entrAr.push(entr);
+    console.log(entrAr);
+}
+
+let obj = Object.fromEntries(map.entries()); // создаём обычный объект (*)
+
+// готово!
+// obj = { banana: 1, orange: 2, meat: 4 }
+console.log(entrAr);
+
+
+
+let set = new Set();
+
+let joh = { name: "John", other:  "Pete" };
+let pete = { name: "Sam" };
+let mary = { name: "Mary" };
+set.add(joh);
+set.add(pete);
+set.add(mary);
+set.add(joh);
+set.add(mary);
+set.add([1,2,4,6])
+
+// set хранит только 3 уникальных значения
+console.log(set.size); // 3
+console.log(set)
+for (let val of set){
+    console.log(val)
+}
+
+let sett = new Set([
+    [1,3], [1,5]
+]
+    /* {
+        from: 1,
+        to: 5,
+      
+      // 1. вызов for..of сначала вызывает эту функцию
+      [Symbol.iterator]() {
+      
+        // ...она возвращает объект итератора:
+        // 2. Далее, for..of работает только с этим итератором,
+        // запрашивая у него новые значения
+        return {
+          current: this.from,
+          last: this.to,
+      
+          // 3. next() вызывается на каждой итерации цикла for..of
+          next() {
+            // 4. он должен вернуть значение в виде объекта {done:.., value :...}
+            if (this.current <= this.last) {
+              return { done: false, value: this.current++ };
+            } else {
+              return { done: true };
+            }
+          }
+        }
+      }
+    } */
+);
+
+console.log(sett);
+
+
+
+let options = {
+    size: {
+      width: 100,
+      height: 200
+    },
+    items: ["Cake", "Donut"],
+    extra: true
+  };
+  
+  // деструктуризация разбита на несколько строк для ясности
+  let {
+    size: { // положим size сюда
+      width,
+      height
+    },
+    items: [item1, item2], // добавим элементы к items
+    title = "Menu" // отсутствует в объекте (используется значение по умолчанию)
+  } = options;
+  
+ console.log(width);
+
+
+ let massss = [1,2,4,5,6];
+ let mass2 = {
+    daughter: "Jolly"
+ };
+
+ let masss3 = [...massss, {...mass2}];
+
+ console.log(masss3)
+ massss.push("brother");
+ console.log(masss3)
+
+
+ function brother() {
+    console.log(hhhh);
+ }
+
+ let hhhh = 10;
+
+ brother();
+
+
+
+
+ function showName() {
+    console.log( arguments.length );
+    console.log( arguments[0] );
+    console.log( arguments[1] );
+  
+    // Объект arguments можно перебирать
+    // for (let arg of arguments) alert(arg);
+  }
+  
+  // Вывод: 2, Юлий, Цезарь
+  showName("Юлий", "Цезарь");
+  
+  // Вывод: 1, Илья, undefined (второго аргумента нет)
+  showName("Илья");
+
+
+
+let superF = 10;
+
+  function makeCounter() {
+    let count = 0;
+  
+    return function() {
+        superF = 20;
+      return count++; // есть доступ к внешней переменной "count"
+    };
+  }
+  
+  let counter = makeCounter();
+
+  
+  console.log( counter() ); // 0
+  console.log( counter() ); // 1
+  console.log( counter() ); // 2
+  console.log( superF); // 2
+
+
+
+  function chechh(){
+    if(1){
+      let bro = 10;
+
+    }
+    console.log(bro);
+  }
+
+  chechh();
+
+
+
+
+  let timerId = setTimeout(() => console.log("ничего не происходит"), 1000);
+  console.log(timerId); // идентификатор таймера
+
+clearTimeout(timerId);
+console.log(timerId); // тот же идентификатор (не принимает значение null после отмены)
